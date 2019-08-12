@@ -14,6 +14,10 @@ import com.example.demo.entity.User;
 @RequestMapping("/api")
 public class UserResource {
 	
+	/**
+	 * Return all users from system
+	 * @return
+	 */
 	@GetMapping("/users")
 	public ResponseEntity<List<User>> findAll(){
 		

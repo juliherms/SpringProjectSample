@@ -2,15 +2,20 @@ package com.example.demo.entity;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * this class represent user
  * @author j.a.vasconcelos
  *
  */
+@Document("users")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private String id;
 	private String firsName;
 	private String lastName;

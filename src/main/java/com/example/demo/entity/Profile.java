@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
 
 /**
  * This class represent profile in the system
@@ -12,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  */
 @Document
-public class Profile implements Serializable {
+public class Profile implements Serializable,GrantedAuthority {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -47,5 +48,11 @@ public class Profile implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String getAuthority() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

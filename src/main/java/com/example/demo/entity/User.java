@@ -5,6 +5,8 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.example.demo.dto.UserDTO;
+
 /**
  * this class represent user
  * @author j.a.vasconcelos
@@ -17,37 +19,50 @@ public class User implements Serializable {
 	
 	@Id
 	private String id;
-	private String firsName;
+	private String firstName;
 	private String lastName;
+	
 	private String email;
 	private boolean active;
 	
 	public User() {}
 	
+	public User(UserDTO userDTO) {
+		this.id = userDTO.getId();
+		this.firstName = userDTO.getFirstName();
+		this.lastName = userDTO.getLastName();
+		this.email = userDTO.getEmail();
+	}
+	
 	public User(String firsName, String lastName, String email, boolean active) {
-		this.firsName = firsName;
+		this.firstName = firsName;
 		this.lastName = lastName;
 		this.email = email;
 		this.active = active;
 	}
+	
+	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getFirsName() {
-		return firsName;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirsName(String firsName) {
-		this.firsName = firsName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
+	
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getEmail() {
 		return email;
 	}

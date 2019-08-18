@@ -1,8 +1,10 @@
 package com.example.demo.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.example.demo.dto.UserDTO;
@@ -21,9 +23,10 @@ public class User implements Serializable {
 	private String id;
 	private String firstName;
 	private String lastName;
-	
 	private String email;
 	private boolean active;
+	@DBRef(lazy = true)
+	private List<Profile> profiles;
 	
 	public User() {}
 	
@@ -84,6 +87,14 @@ public class User implements Serializable {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+	
+	public List<Profile> getProfiles() {
+		return profiles;
+	}
+
+	public void setProfiles(List<Profile> profiles) {
+		this.profiles = profiles;
 	}
 
 	@Override

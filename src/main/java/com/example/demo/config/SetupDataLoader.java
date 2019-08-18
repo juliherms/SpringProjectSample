@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 		
 		User jose = new User("José","Carvalho","jose@gmail.com",true);
 		User fred = new User("Fred","Vasconcelos","fredvasco@gmail.com",true);
+		
+		jose.setProfiles(Arrays.asList(profileUser));
+		fred.setProfiles(Arrays.asList(profileAdmin));
 		
 		createUserINotFound(jose);
 		createUserINotFound(fred);

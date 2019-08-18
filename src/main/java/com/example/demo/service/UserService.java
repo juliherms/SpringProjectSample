@@ -50,7 +50,24 @@ public class UserService {
 		return repo.save(user);
 	}
 	
+	/**
+	 * Convert userDTO to User
+	 * @param userDTO
+	 * @return
+	 */
 	public User fromDTO(UserDTO userDTO) {
 		return new User(userDTO);
+	}
+	
+	/**
+	 * Update User
+	 * @param user
+	 * @return
+	 */
+	public User update(User user) {
+		Optional<User> updateUser = repo.findById(user.getId());
+		
+		return updateUser.map(u -> repo.save(new User(u.getId(), user.getFirstName(), user.getLastName(), user.getEmail(),true)))
+				.orElseThrow(() -> new ObjectNotFoundException("User not found!"));
 	}
 }

@@ -70,4 +70,14 @@ public class UserService {
 		return updateUser.map(u -> repo.save(new User(u.getId(), user.getFirstName(), user.getLastName(), user.getEmail(),true)))
 				.orElseThrow(() -> new ObjectNotFoundException("User not found!"));
 	}
+	
+	/**
+	 * Delete user
+	 * @param id
+	 */
+	public void delete(String id) {
+		repo.deleteById(id);
+	}
+	
+	
 }

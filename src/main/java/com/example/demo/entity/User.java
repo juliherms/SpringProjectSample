@@ -20,15 +20,15 @@ public class User implements Serializable {
 	private String firsName;
 	private String lastName;
 	private String email;
+	private boolean active;
 	
-	public User() {
-		
-	}
+	public User() {}
 	
-	public User(String firsName, String lastName, String email) {
+	public User(String firsName, String lastName, String email, boolean active) {
 		this.firsName = firsName;
 		this.lastName = lastName;
 		this.email = email;
+		this.active = active;
 	}
 	public String getId() {
 		return id;
@@ -53,6 +53,14 @@ public class User implements Serializable {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.User;
 
+/**
+ * This class responsible to access collections users.
+ * @author j.a.vasconcelos
+ *
+ */
 @RestController
 @RequestMapping("/api")
 public class UserResource {
@@ -22,10 +27,9 @@ public class UserResource {
 	public ResponseEntity<List<User>> findAll(){
 		
 		List<User> users = new ArrayList<User>();
-		users.add(new User("João","Pedro","joaopedro@gmail.com"));
-		users.add(new User("Carla","Maria","carla@gmail.com"));
+		users.add(new User("João","Pedro","joaopedro@gmail.com",true));
+		users.add(new User("Carla","Maria","carla@gmail.com",true));
 		
 		return ResponseEntity.ok().body(users);
-		
 	}
 }

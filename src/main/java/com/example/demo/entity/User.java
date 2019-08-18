@@ -24,6 +24,7 @@ public class User implements Serializable {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String password;
 	private boolean active;
 	@DBRef(lazy = true)
 	private List<Profile> profiles;
@@ -37,18 +38,30 @@ public class User implements Serializable {
 		this.email = userDTO.getEmail();
 	}
 	
-	public User(String firsName, String lastName, String email, boolean active) {
+	public User(User user) {
+		super();
+		this.id = user.getId();
+		this.firstName = user.getFirstName();
+		this.lastName = user.getLastName();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.profiles = user.getProfiles();
+	}
+	
+	public User(String firsName, String lastName, String email, boolean active, String password) {
 		this.firstName = firsName;
 		this.lastName = lastName;
 		this.email = email;
+		this.password = password;
 		this.active = active;
 	}
 	
-	public User(String id,String firsName, String lastName, String email, boolean active) {
+	public User(String id,String firsName, String lastName, String email, boolean active,String password) {
 		this.id = id;
 		this.firstName = firsName;
 		this.lastName = lastName;
 		this.email = email;
+		this.password = password;
 		this.active = active;
 	}
 	
@@ -95,6 +108,14 @@ public class User implements Serializable {
 
 	public void setProfiles(List<Profile> profiles) {
 		this.profiles = profiles;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override

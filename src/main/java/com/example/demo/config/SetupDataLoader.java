@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.demo.entity.Profile;
 import com.example.demo.entity.User;
@@ -22,6 +23,9 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 	@Autowired
 	private ProfileRepository repoProfile;
 	
+	@Autowired
+	private PasswordEncoder passEncoder;
+	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		
@@ -32,8 +36,8 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 		Profile profileUser = createProfileIfNotFound("ROLE_USER");
 		
 		
-		User jose = new User("José","Carvalho","jose@gmail.com",true);
-		User fred = new User("Fred","Vasconcelos","fredvasco@gmail.com",true);
+		User jose = new User("José","Carvalho","jose@gmail.com",true,passEncoder.encode("123"));
+		User fred = new User("Fred","Vasconcelos","fredvasco@gmail.com",true,passEncoder.encode("1234"));
 		
 		jose.setProfiles(Arrays.asList(profileUser));
 		fred.setProfiles(Arrays.asList(profileAdmin));

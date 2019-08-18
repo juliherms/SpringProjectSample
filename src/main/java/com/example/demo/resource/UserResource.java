@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.UserDTO;
+import com.example.demo.entity.Profile;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 
@@ -86,5 +87,17 @@ public class UserResource {
 	public ResponseEntity<Void> delete(@PathVariable String id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	/**
+	 * Get profiles from user
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/users/{id}/profiles")
+	public ResponseEntity<List<Profile>> findProfiles(@PathVariable String id){
+		User user = service.findById(id);
+		
+		return ResponseEntity.ok().body(user.getProfiles());
 	}
 }
